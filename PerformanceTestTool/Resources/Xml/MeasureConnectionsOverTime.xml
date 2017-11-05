@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<tasks description="Step 1 will run for 30 minutes. While running, Performance Counters will be collected every minute.&#xD;&#xA;When finished, apply the Stylesheet &quot;User Connections&quot; from the default Stylesheet Collection." connections="1" timeBetweenConnections="0" performanceCountersSamplingInterval="60000" mode="Parallel" usePooling="True" minPooling="0" maxPooling="100">
+	<task name="Collect Performance Counters" sql="waitfor delay '00:30:00'&#xD;&#xA;" type="Normal" description="" enabled="True" delayAfterCompletion="0" includeInResults="True" />
+</tasks>

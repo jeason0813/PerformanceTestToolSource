@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2017 Lars Hove Christiansen
+http://virtcore.com
+
+This file is a part of Performance Test Tool
+
+	Performance Test Tool is free software: you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation, either version 3 of the License, or
+	(at your option) any later version.
+
+	Performance Test Tool is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+	GNU General Public License for more details.
+
+	You should have received a copy of the GNU General Public License
+	along with Performance Test Tool. If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:netfx="http://schemas.microsoft.com/wix/NetFxExtension">
+	<Product Id="*" Name="Performance Test Tool" Language="1033" Version="1.0.0" Manufacturer="Lars Hove Christiansen" UpgradeCode="127E4D6C-0A24-4E48-85C6-0DBE7E6AE220">
+		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" Description="Performance Test Tool 1.0.0" />
+		<Media Id="1" Cabinet="PerformanceTestTool.cab" EmbedCab="yes" />
+		<MajorUpgrade DowngradeErrorMessage="A later version of Performance Test Tool is already installed. Setup will now exit." />
+
+		<WixVariable Id="WixUILicenseRtf" Value="License.rtf" />
+
+		<Icon Id="PerformanceTestTool.exe" SourceFile="$(var.PerformanceTestTool.TargetPath)" />
+		<Property Id="ARPPRODUCTICON" Value="PerformanceTestTool.exe" />
+		<Property Id="WIXUI_INSTALLDIR" Value="INSTALLDIR" />
+		<PropertyRef Id="NETFRAMEWORK20"/>
+
+		<Condition Message="This application requires .NET Framework 2.0. Please install the .NET Framework then run this installer again.">
+			<![CDATA[Installed OR NETFRAMEWORK20]]>
+		</Condition>
+
+		<Feature Id="Complete" Title="Performance Test Tool" Level="1" ConfigurableDirectory="INSTALLDIR">
+			<ComponentRef Id="MainExecutable" />
+			<ComponentRef Id="ProgramMenuDir" />
+		</Feature>
+
+		<UI>
+			<UIRef Id="WixUI_InstallDir" />
+			<Publish Dialog="ExitDialog" Control="Finish" Event="DoAction" Value="LaunchApplication">WIXUI_EXITDIALOGOPTIONALCHECKBOX = 1 and NOT Installed</Publish>
+		</UI>
+
+		<Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOXTEXT" Value="Launch application after install" />
+		<Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOX" Value="1" />
+		<Property Id="WixShellExecTarget" Value="[#PerformanceTestTool.exe]" />
+		<CustomAction Id="LaunchApplication" BinaryKey="WixCA" DllEntry="WixShellExec" Impersonate="yes" />
+
+		<Directory Id="TARGETDIR" Name="SourceDir">
+			<Directory Id="ProgramFilesFolder">
+				<Directory Id="INSTALLDIR" Name="Performance Test Tool">
+					<Component Id="MainExecutable">
+						<File Id="PerformanceTestTool.exe" Source="$(var.PerformanceTestTool.TargetPath)" KeyPath="yes">
+							<Shortcut Id="startmenu" Directory="ProductProgramMenuFolder" Name="Performance Test Tool" WorkingDirectory="INSTALLDIR" Icon="PerformanceTestTool.exe" IconIndex="0" Advertise="yes" />
+							<Shortcut Id="desktop" Directory="DesktopFolder" Name="Performance Test Tool" WorkingDirectory="INSTALLDIR" Icon="PerformanceTestTool.exe" IconIndex="0" Advertise="yes" />
+						</File>
+					</Component>
+				</Directory>
+			</Directory>
+
+			<Directory Id="ProgramMenuFolder" Name="Programs">
+				<Directory Id="ProductProgramMenuFolder" Name="Performance Test Tool">
+					<Component Id="ProgramMenuDir">
+						<CreateFolder Directory="ProductProgramMenuFolder" />
+						<RemoveFolder Id="RemoveProductProgramMenuFolder" Directory="ProductProgramMenuFolder" On="uninstall" />
+						<RegistryValue Root="HKCU" Key="Software\Lars Hove Christiansen\PerformanceTestTool" Name="Installed" Type="integer" Value="1" KeyPath="yes" />
+						<RemoveRegistryKey Id="RemoveRegistryEntries" Action="removeOnUninstall" Root="HKCU" Key="SOFTWARE\Lars Hove Christiansen\PerformanceTestTool" />
+					</Component>
+				</Directory>
+			</Directory>
+
+			<Directory Id="DesktopFolder" Name="Desktop" />
+		</Directory>
+	</Product>
+</Wix>

@@ -1,0 +1,161 @@
+<?xml version="1.0"?>
+<xsd:schema attributeFormDefault="qualified" elementFormDefault="qualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+	<xsd:simpleType name="dateTime">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="23" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="str50">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="50" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="str128">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="128" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:element name="result">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element minOccurs="1" maxOccurs="1" name="server">
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element minOccurs="7" maxOccurs="7" name="info">
+								<xsd:complexType>
+									<xsd:attribute name="name" type="str50" use="required" />
+									<xsd:attribute name="value" type="str128" use="required" />
+								</xsd:complexType>
+							</xsd:element>
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element minOccurs="1" maxOccurs="1" name="tasks">
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element minOccurs="1" maxOccurs="1" name="summary">
+								<xsd:complexType>
+									<xsd:sequence>
+										<xsd:element minOccurs="7" maxOccurs="7" name="value">
+											<xsd:complexType>
+												<xsd:attribute name="name" type="str50" use="required" />
+												<xsd:attribute name="minimum" type="xsd:unsignedLong" use="required" />
+												<xsd:attribute name="maximum" type="xsd:unsignedLong" use="required" />
+												<xsd:attribute name="average" type="xsd:unsignedLong" use="required" />
+												<xsd:attribute name="sum" type="xsd:unsignedLong" use="required" />
+											</xsd:complexType>
+										</xsd:element>
+										<xsd:element minOccurs="1" maxOccurs="1" name="connectionValues">
+											<xsd:complexType>
+												<xsd:sequence>
+													<xsd:element minOccurs="0" maxOccurs="unbounded" name="value">
+														<xsd:complexType>
+															<xsd:attribute name="connection" type="xsd:nonNegativeInteger" use="required" />
+															<xsd:attribute name="reads" type="xsd:unsignedLong" use="required" />
+															<xsd:attribute name="writes" type="xsd:unsignedLong" use="required" />
+															<xsd:attribute name="cpu" type="xsd:unsignedLong" use="required" />
+															<xsd:attribute name="rowcounts" type="xsd:unsignedLong" use="required" />
+															<xsd:attribute name="duration" type="xsd:unsignedLong" use="required" />
+															<xsd:attribute name="latency" type="xsd:unsignedLong" use="required" />
+															<xsd:attribute name="totalduration" type="xsd:unsignedLong" use="required" />
+														</xsd:complexType>
+													</xsd:element>
+												</xsd:sequence>
+											</xsd:complexType>
+										</xsd:element>
+									</xsd:sequence>
+								</xsd:complexType>
+							</xsd:element>
+							<xsd:element minOccurs="0" maxOccurs="unbounded" name="task">
+								<xsd:complexType>
+									<xsd:sequence>
+										<xsd:element minOccurs="1" maxOccurs="1" name="data">
+											<xsd:complexType>
+												<xsd:sequence>
+													<xsd:element minOccurs="6" maxOccurs="6" name="value">
+														<xsd:complexType>
+															<xsd:attribute name="name" type="str50" use="required" />
+															<xsd:attribute name="minimum" type="xsd:unsignedLong" use="required" />
+															<xsd:attribute name="maximum" type="xsd:unsignedLong" use="required" />
+															<xsd:attribute name="average" type="xsd:unsignedLong" use="required" />
+															<xsd:attribute name="sum" type="xsd:unsignedLong" use="required" />
+														</xsd:complexType>
+													</xsd:element>
+													<xsd:element minOccurs="1" maxOccurs="1" name="connectionValues">
+														<xsd:complexType>
+															<xsd:sequence>
+																<xsd:element minOccurs="0" maxOccurs="unbounded" name="value">
+																	<xsd:complexType>
+																		<xsd:attribute name="connection" type="xsd:nonNegativeInteger" use="required" />
+																		<xsd:attribute name="reads" type="xsd:unsignedLong" use="required" />
+																		<xsd:attribute name="writes" type="xsd:unsignedLong" use="required" />
+																		<xsd:attribute name="cpu" type="xsd:unsignedLong" use="required" />
+																		<xsd:attribute name="rowcounts" type="xsd:unsignedLong" use="required" />
+																		<xsd:attribute name="duration" type="xsd:unsignedLong" use="required" />
+																		<xsd:attribute name="starttime" type="dateTime" use="required" />
+																		<xsd:attribute name="message" type="xsd:string" use="required" />
+																	</xsd:complexType>
+																</xsd:element>
+															</xsd:sequence>
+														</xsd:complexType>
+													</xsd:element>
+												</xsd:sequence>
+											</xsd:complexType>
+										</xsd:element>
+									</xsd:sequence>
+									<xsd:attribute name="name" type="xsd:string" use="required" />
+									<xsd:attribute name="type" type="str50" use="required" />
+									<xsd:attribute name="description" type="xsd:string" use="required" />
+									<xsd:attribute name="delayAfterCompletion" type="xsd:nonNegativeInteger" use="required" />
+									<xsd:attribute name="firstConnectionStartTime" type="dateTime" use="required" />
+								</xsd:complexType>
+							</xsd:element>
+						</xsd:sequence>
+						<xsd:attribute name="description" type="xsd:string" use="required" />
+						<xsd:attribute name="connections" type="xsd:nonNegativeInteger" use="required" />
+						<xsd:attribute name="timeBetweenConnections" type="xsd:nonNegativeInteger" use="required" />
+						<xsd:attribute name="mode" type="xsd:string" use="required" />
+						<xsd:attribute name="usePooling" type="xsd:string" use="required" />
+						<xsd:attribute name="minPooling" type="xsd:nonNegativeInteger" use="required" />
+						<xsd:attribute name="maxPooling" type="xsd:nonNegativeInteger" use="required" />
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element minOccurs="0" maxOccurs="1" name="performanceCounters">
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element minOccurs="0" maxOccurs="unbounded" name="object">
+								<xsd:complexType>
+									<xsd:sequence>
+										<xsd:element minOccurs="0" maxOccurs="unbounded" name="counter">
+											<xsd:complexType>
+												<xsd:sequence>
+													<xsd:element minOccurs="0" maxOccurs="unbounded" name="value">
+														<xsd:complexType>
+															<xsd:attribute name="instanceName" type="str128" use="required" />
+															<xsd:attribute name="minimum" type="xsd:long" use="required" />
+															<xsd:attribute name="maximum" type="xsd:long" use="required" />
+															<xsd:attribute name="average" type="xsd:long" use="required" />
+														</xsd:complexType>
+													</xsd:element>
+												</xsd:sequence>
+												<xsd:attribute name="name" type="str128" use="required" />
+											</xsd:complexType>
+										</xsd:element>
+									</xsd:sequence>
+									<xsd:attribute name="name" type="str128" use="required" />
+								</xsd:complexType>
+							</xsd:element>
+						</xsd:sequence>
+						<xsd:attribute name="samples" type="xsd:nonNegativeInteger" use="required" />
+						<xsd:attribute name="interval" type="xsd:nonNegativeInteger" use="required" />
+					</xsd:complexType>
+				</xsd:element>
+			</xsd:sequence>
+			<xsd:attribute name="runTime" type="xsd:dateTime" use="required" />
+			<xsd:attribute name="version" type="str50" use="required" />
+			<xsd:attribute name="executionTime" type="xsd:time" use="required" />
+		</xsd:complexType>
+	</xsd:element>
+</xsd:schema>

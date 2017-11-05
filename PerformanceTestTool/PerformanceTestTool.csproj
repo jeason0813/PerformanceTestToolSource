@@ -1,0 +1,517 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F1BFDC47-9977-4F8F-9BD7-D286D30F0459}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PerformanceTestTool</RootNamespace>
+    <AssemblyName>PerformanceTestTool</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <StartupObject>Program</StartupObject>
+    <ApplicationIcon>Resources\Icons\programicon.ico</ApplicationIcon>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>Virtcore.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Resources\Assemblies\ICSharpCode.SharpZipLib.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="TabControlEX, Version=0.0.2068.35667, Culture=neutral, PublicKeyToken=1db242dc828e4b4e">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Resources\Assemblies\TabControlEX.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AboutForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AboutForm.Designer.cs">
+      <DependentUpon>AboutForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CheckForUpdatesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CheckForUpdatesForm.Designer.cs">
+      <DependentUpon>CheckForUpdatesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ComboBoxCustom.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CommandLineParametersForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CommandLineParametersForm.designer.cs">
+      <DependentUpon>CommandLineParametersForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ChangeValueForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChangeValueForm.Designer.cs">
+      <DependentUpon>ChangeValueForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Compression.cs" />
+    <Compile Include="ConfigHandler.cs" />
+    <Compile Include="ConnectionDialogForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConnectionDialogForm.designer.cs">
+      <DependentUpon>ConnectionDialogForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CalculatedPerformanceCounter.cs" />
+    <Compile Include="ConnectionStringSecurity.cs" />
+    <Compile Include="ErrorFormHandler.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SearchHistoryHandler.cs" />
+    <Compile Include="SearchTextForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SearchTextForm.Designer.cs">
+      <DependentUpon>SearchTextForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SearchListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SearchListForm.Designer.cs">
+      <DependentUpon>SearchListForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FilterHelper.cs" />
+    <Compile Include="GenericHelper.cs" />
+    <Compile Include="PerformanceCounterHelper.cs" />
+    <Compile Include="RanTaskInfo.cs" />
+    <Compile Include="ImportResultXml.cs" />
+    <Compile Include="ImportTraceDataValue.cs" />
+    <Compile Include="BorderLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RecentFilesHandler.cs" />
+    <Compile Include="RegistryHandler.cs" />
+    <Compile Include="ResultTask.cs" />
+    <Compile Include="ServiceHandler.cs" />
+    <Compile Include="SessionHelper.cs" />
+    <Compile Include="StylesheetCollection.cs" />
+    <Compile Include="StylesheetForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StylesheetForm.Designer.cs">
+      <DependentUpon>StylesheetForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Stylesheet.cs" />
+    <Compile Include="StylesheetEditorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StylesheetEditorForm.Designer.cs">
+      <DependentUpon>StylesheetEditorForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DynamicAssembly.cs" />
+    <Compile Include="ListViewColumnSorter.cs" />
+    <Compile Include="PerformanceCounterResult.cs" />
+    <Compile Include="PerformanceCounters.cs" />
+    <Compile Include="ResultsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ResultsForm.Designer.cs">
+      <DependentUpon>ResultsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ResultInfo.cs" />
+    <Compile Include="SplitContainerGrip.cs" />
+    <Compile Include="StylesheetHelper.cs" />
+    <Compile Include="TabPageUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TabPageUserControl.Designer.cs">
+      <DependentUpon>TabPageUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dal.cs" />
+    <Compile Include="DatabaseOperation.cs" />
+    <Compile Include="ErrorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ErrorForm.designer.cs">
+      <DependentUpon>ErrorForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ResultTaskCollection.cs" />
+    <Compile Include="TaskCollection.cs" />
+    <Compile Include="TaskForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TaskForm.Designer.cs">
+      <DependentUpon>TaskForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PreferencesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PreferencesForm.designer.cs">
+      <DependentUpon>PreferencesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PerformanceCounter.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="CheckForUpdatesForm.resx">
+      <DependentUpon>CheckForUpdatesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CommandLineParametersForm.resx">
+      <DependentUpon>CommandLineParametersForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConnectionDialogForm.resx">
+      <DependentUpon>ConnectionDialogForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ErrorForm.resx">
+      <DependentUpon>ErrorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TaskForm.resx">
+      <DependentUpon>TaskForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PreferencesForm.resx">
+      <DependentUpon>PreferencesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ResultsForm.resx">
+      <DependentUpon>ResultsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TabPageUserControl.resx">
+      <DependentUpon>TabPageUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TaskEditorForm.resx">
+      <DependentUpon>TaskEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Task.cs" />
+    <Compile Include="RunTaskInfo.cs" />
+    <Compile Include="TaskEditorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TaskEditorForm.Designer.cs">
+      <DependentUpon>TaskEditorForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TaskHelper.cs" />
+    <Compile Include="TraceDataHelper.cs" />
+    <Compile Include="TraceDataResult.cs" />
+    <Compile Include="TraceFileData.cs" />
+    <Compile Include="TraceFileHandler.cs" />
+    <Compile Include="TraceRecordingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TraceRecordingForm.Designer.cs">
+      <DependentUpon>TraceRecordingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ValueSubstitutorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ValueSubstitutorForm.Designer.cs">
+      <DependentUpon>ValueSubstitutorForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WorkloadManagerConfigHandler.cs" />
+    <Compile Include="WorkloadManagerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WorkloadManagerForm.Designer.cs">
+      <DependentUpon>WorkloadManagerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="XmlHelper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.manifest">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PerformanceTestTool.licenseheader" />
+    <None Include="Resources\Icons\help.ico" />
+    <None Include="Virtcore.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icons\bullet_wrench.ico" />
+    <EmbeddedResource Include="Resources\Sql\GetPerformanceCounters.sql">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Sql\GetTraceData.sql">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Sql\StopDeleteTrace.sql">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Sql\StartTrace.sql">
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\disk.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\cogtab.gif" />
+    <None Include="Resources\Icons\cog_edit.ico" />
+    <None Include="Resources\Images\cog.png" />
+    <None Include="Resources\Icons\cog.ico" />
+    <EmbeddedResource Include="Resources\Sql\CreateTrace.sql">
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Xml\BasicPerformanceTest.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Assemblies\ICSharpCode.SharpZipLib.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\cog_delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\cog_add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\cog_edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icons\cog_add.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Xml\MeasureConnectionsOverTime.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\font.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\cog_go.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="StylesheetForm.resx">
+      <DependentUpon>StylesheetForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StylesheetEditorForm.resx">
+      <DependentUpon>StylesheetEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Xml\DefaultStylesheets.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icons\page.ico" />
+    <None Include="Resources\Icons\page_add.ico" />
+    <None Include="Resources\Icons\page_edit.ico" />
+    <None Include="Resources\Images\bullet_wrench.png" />
+    <None Include="Resources\Images\help.png" />
+    <None Include="Resources\Images\page_add_small.png" />
+    <None Include="Resources\Images\page_delete_small.png" />
+    <None Include="Resources\Images\page_edit_small.png" />
+    <None Include="Resources\Images\page_small.png" />
+    <EmbeddedResource Include="Resources\Sql\StartTraceRecording.sql" />
+    <EmbeddedResource Include="Resources\Xml\ParametersExample1.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="TraceRecordingForm.resx">
+      <DependentUpon>TraceRecordingForm.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icons\stop.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\stop_small.png" />
+    <EmbeddedResource Include="Resources\Sql\GetTraceRecordingData.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Xml\ParametersExample2.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\control_pause.png" />
+    <None Include="Resources\Images\control_stop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="AboutForm.resx">
+      <DependentUpon>AboutForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChangeValueForm.resx">
+      <DependentUpon>ChangeValueForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Assemblies\TabControlEX.dll" />
+    <None Include="Resources\Images\database_key_small.png" />
+    <EmbeddedResource Include="Resources\Xsd\PerformanceTestToolXmlResult.xsd" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\folder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icons\cmd.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\cmd_small.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icons\programicon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\programicon_small.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\diagram_large.png" />
+    <EmbeddedResource Include="Resources\Sql\SqlServerInfo.sql" />
+    <EmbeddedResource Include="ValueSubstitutorForm.resx">
+      <DependentUpon>ValueSubstitutorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WorkloadManagerForm.resx">
+      <DependentUpon>WorkloadManagerForm.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="SearchTextForm.resx">
+      <DependentUpon>SearchTextForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SearchListForm.resx">
+      <DependentUpon>SearchListForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Xml\IOPerformanceTest.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icons\find.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\find_small.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Profiler.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Sql\CreateEventSession.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Sql\DropEventSession.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Sql\GetEventSessionData.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Sql\GetEventSessionRecordingData.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Sql\StartEventSession.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Sql\StartEventSessionRecording.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Sql\StopEventSession.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\update.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icons\edit.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\Assemblies\ICSharpCode.TextEditor.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ICSharpCode.TextEditor\ICSharpCode.TextEditor.csproj">
+      <Project>{2d18be89-d210-49eb-a9dd-2246fbb3df6d}</Project>
+      <Name>ICSharpCode.TextEditor</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
